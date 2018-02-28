@@ -32,8 +32,6 @@ function colorize () {
   }
 }
 
-
-
 function init () {
   playx()
   pole = []
@@ -42,46 +40,42 @@ function init () {
     section = x[key].split('/')[1]
     name = x[key]
     if (!document.getElementById(section)) {
-      let div = document.createElement('div');
-      div.id = section;
-      document.getElementById('body').appendChild(div);
-      sec = document.getElementById(section);
-      h3 = document.createElement('h3');
-      h3.innerHTML= section;
-      sec.appendChild(h3);
+      let div = document.createElement('div')
+      div.id = section
+      document.getElementById('body').appendChild(div)
+      sec = document.getElementById(section)
+      h3 = document.createElement('h3')
+      h3.innerHTML = section
+      sec.appendChild(h3)
     }
     let a = document.createElement('a')
     //            a.onclick="playSound('"+x[key]+"');"
     a.onclick = function () { playSound(x[key]); }
     a.classList = 'action-button shadow animate'
     a.innerHTML = key
-    a.href = '#'+key
+    a.href = '#' + key
     document.getElementById(section).appendChild(a)
   })
-  colorize();
+  colorize()
 }
 function playSound (path) {
-  let x = document.getElementById('kokot');
-  let source = document.getElementById('audioSource');
-  source.src = path;
-  //x.onended = function () { playSound(x[key]); }
-  x.load();
-  x.play();
+  let x = document.getElementById('kokot')
+  let source = document.getElementById('audioSource')
+  source.src = path
+  if (toPlay.length > 1) {
+    x.onended = function () { playx(); }
+  } else {x.onended = function () {}}
+  more += 1
+  x.load()
+  x.play()
 }
 
-function playx () {
-  if (location.hash.length > 1) {
-    //playSound('data/' + location.hash.substr(1) + '.mp3')
-    
-    let toPlay = location.hash.split("|")
-    if (toPlay.length > 1 ){
-        for (let i=0; i<toPlay.length; i++){
-            playSound(x[toPlay[i].replace("#","")])
-        }
-    }
-    else {
-        playSound(x[location.hash.substr(1)])
-    }
+let more = 0
+let toPlay = []
 
+function playx () {
+  toPlay = location.hash.split('|')
+  if (location.hash.length > 1) {
+    playSound(x[toPlay[more].replace('#', '')])
   }
 }
