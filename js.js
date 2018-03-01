@@ -59,7 +59,7 @@ function init () {
   colorize()
 }
 function playSound (path) {
-  let x = document.getElementById('kokot')
+  let x = document.getElementById('player')
   let source = document.getElementById('audioSource')
   source.src = path
   if (toPlay.length > 1) {
