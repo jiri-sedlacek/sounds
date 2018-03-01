@@ -8,13 +8,15 @@
   <link rel="stylesheet" href="css/core.css">
   
 </head>
-<script src="js.js"></script>
+<script type="text/javascript" src="sounds.js"></script>
 <script type="text/javascript" src="data.js"></script>
 <body id="body" onload="init();">
-  <audio id="kokot">
-    <source id="audioSource" src="" type="audio/mpeg"> Your browser does not support the audio element.
-  </audio>
+  <div id="mix-panel" class="mix-panel">
+    <button id="mix-panel-play" class="mix-panel-play action-button">&#9658;</button>
+    <div id="mix-panel-sounds" class="mix-panel-sounds">
 
+    </div>
+    <button id="mix-panel-clear" class="mix-panel-clear action-button">&#x2715;</button>
+  </div>
 </body>
-
 </html>
